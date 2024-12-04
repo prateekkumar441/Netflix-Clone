@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+
+    <!-- Custom Styles -->
+    <style>
+        .bg-image {
+            background-image: url("./netflix_background_images.jpg");
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .bg-shade {
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        section {
+            padding-top: 100px;
+        }
+    </style>
+
+    <!-- Bootstrap Library -->
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    
+
+    <script src="/node_modules/react/umd/react.development.js"></script>
+    <script src="/node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="/node_modules/@babel/standalone/babel.js"></script>
+
+    <!-- React Components -->
+    <script type="text/babel">
+        function NetflixIndex() {
+            return (
+                <div className="bg-image">
+                    <div className="bg-shade">
+                        <NetflixHeader />
+                        <section>
+                            <NetflixMain />
+                        </section>
+                    </div>
+                </div>
+            );
+        }
+
+        function NetflixHeader() {
+            return (
+                <header className="p-3 d-flex justify-content-between align-items-center">
+                    <div className="fs-3 fw-bold text-danger">
+                        NETFLIX
+                        <button className="btn btn-light ms-2 bi bi-justify" data-bs-toggle="offcanvas" data-bs-target="#navbar"></button>
+                    </div>
+                    <div className="offcanvas bg-dark text-white offcanvas-start" id="navbar">
+                        <div className="offcanvas-header">
+                            <h3>Netflix</h3>
+                            <button className="btn btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                        </div>
+                        <div className="offcanvas-body">
+                            <ul className="list-unstyled">
+                                <li>Movies</li>
+                                <li>TV Shows</li>
+                                <li>Upcoming</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <span className="bg-light p-2 me-2 rounded">
+                            <span className="bi bi-translate"> Language </span>
+                            <span className="bi bi-chevron-down"></span>
+                        </span>
+                        <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#signin">Sign in</button>
+                        <div className="modal fade" id="signin">
+                            <div className="modal-dialog">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h3 className="bi bi-person-fill"> Netflix Signin</h3>
+                                    </div>
+                                    <div className="modal-body">
+                                        <dl>
+                                            <dt>Email</dt>
+                                            <dd><input type="email" className="form-control" /></dd>
+                                            <dt>Password</dt>
+                                            <dd><input type="password" className="form-control" /></dd>
+                                        </dl>
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button className="btn btn-danger" data-bs-dismiss="modal">Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            );
+        }
+
+        function NetflixMain() {
+            return (
+                <main className="text-white text-center">
+                    <div className="h1">Unlimited movies, TV <br />shows, and more</div>
+                    <div className="mt-3 fs-6">Starts at ₹149. Cancel anytime.</div>
+                    <NetflixRegister />
+                </main>
+            );
+        }
+
+        function NetflixRegister() {
+            return (
+                <form className="mt-4">
+                    <p className="fs-6">Ready to watch? Enter your email to create or restart your membership</p>
+                    <div className="d-flex justify-content-center">
+                        <div className="input-group input-group-lg">
+                            <input type="email" className="form-control bg-dark text-white" placeholder="Your email address" />
+                            <button className="btn btn-danger">Get Started <span className="bi bi-chevron-right"></span></button>
+                        </div>
+                    </div>
+                </form>
+            );
+        }
+
+        ReactDOM.render(<NetflixIndex />, document.getElementById("root"));
+    </script>
+</head>
+
+<body>
+    <noscript>Please enable the JavaScript library</noscript>
+    <div id="root"></div>
+</body>
+
+</html>
